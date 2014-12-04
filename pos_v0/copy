@@ -1,0 +1,36 @@
+function printInventory(inputs){
+
+  var subtotal = 0;
+  var tagArray = [];
+  var num = 0;
+  var string = '***<没钱赚商店>购物清单***\n';
+
+  for (var i= 0; i< tagArray.length; i++){
+
+       if( tagArray[j].barcode != inputs[i].barcode){
+
+         tagArray.push({barcode: inputs[i].barcode,
+           price: inputs[i].price,unit: inputs[i].unit,
+           name: inputs[i].name, num: 1});
+
+       }else{
+
+         tagArray[j].num++;
+         continue;
+
+        }
+
+  }
+
+
+  subtotal += (tagArray[j].num*tagArray[j].price);
+  string += ('名称：' + tagArray[j].name +
+  '，数量：' + tagArray[j].num + tagArray[j].unit +
+  '，单价：' + tagArray[j].price.toFixed(2) +
+  '(元)，小计：' +(tagArray[j].num*tagArray[j].price).toFixed(2) +
+  '(元)\n');
+
+  console.log(string + '----------------------\n' +
+  '总计：' + subtotal.toFixed(2) +
+  '(元)\n' + '**********************');
+}
