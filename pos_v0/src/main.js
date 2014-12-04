@@ -8,7 +8,7 @@ function printInventory(items) {
 
     var item = items[i];
 
-    var subtotal = getSubtotal(item.count, item.price);
+    var subtotal = item.count * item.price;
 
     totalAmount += subtotal;
 
@@ -21,11 +21,8 @@ function printInventory(items) {
 
   inventoryText += '----------------------\n' +
     '总计：' + totalAmount.toFixed(2) +
-    '(元)\n' + '**********************'；
+    '(元)\n' + '**********************';
 
   console.log(inventoryText);
-}
 
-function getSubtotal(count, price) {
-  return count * price;
 }
