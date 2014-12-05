@@ -1,4 +1,16 @@
-function printInventory(items) {
+function printInventory(barcode) {
+  var items = [];
+  var allItems = loadAllItems();
+
+  for(var i = 0; i < barcode.length; i++){
+
+    var items = finditems( )
+
+    if(allItems[i].barcode === barcode){
+      items.push(allItems[i]);
+    }
+    return items;
+  }
 
   // 1. 循环items
   // 2. 我们想把每一次循环的结果放在一个新的集合(cartItems)中用于统计
@@ -66,3 +78,145 @@ function findCartItem(cartItems, barcode){
 function getSubtotal(price, count){
   return price * count;
 }
+
+function finditems(allItems, barcode){
+  var allItems = loadAllItems();
+  var items;
+  for(var i = 0; i < allItems.length; i++){
+    if(items == allItems[i].barcode){
+     items = allItems[i];
+    }
+  }
+  return items;
+}
+// function printInventory(barcode) {
+//   var Items = findItems(loadAllItems, barcode);
+//
+//   var cartItem = findCartItem(items, Items[i].barcode);
+//
+//   var InventoryTsxt = findInventory(subtotal, count);
+//
+//   return InventoryText;
+// }
+//
+// function cartItems(barcode){
+//   var cartItems = [];
+//
+//   for(var i = 0; i < items.length; i++) {
+//     var cartItem = findCartItem(cartItems, items[i].barcode);
+//     if (cartItem) {
+//       cartItem.count++;
+//     } else {
+//       cartItems.push({ item: items[i], count: 1 });
+//     }
+//   }
+//   return cartItems;
+// }
+//
+//
+// function findItems(loadAllItems, barcode);{
+//   var Items = [];
+//
+//   allItems = loadAllItems();
+//
+//   for(var i = o; i < allItems.length; i++){
+//     if(allItems[i].barcode === barcode[i]){
+//       Items = allItems[i];
+//     }
+//   }
+//   return Items;
+// }
+//
+// function findCartItem(cartItems, barcode){
+//   var cartItem;
+//
+//   for(var i = 0; i < cartItems.length; i++){
+//     if(cartItems[i].item.barcode == barcode){
+//       cartItem = cartItems[i];
+//     }
+//   }
+//   return cartItem;
+// }
+//
+// function findInventoryText(){
+//   var totalAmount = 0;
+//   var cartItemsText = '';
+//
+//   for(var x = 0; x < cartItems.length; x++) {
+//     var cartItem = cartItems[x];
+//     var item = cartItem.item;
+//
+//     var subtotal = getSubtotal(item.price, cartItem.count);
+//
+//     cartItemsText += '名称：' + item.name +
+//                      '，数量：' + cartItem.count + item.unit +
+//                      '，单价：' + item.price.toFixed(2) +
+//                      '(元)，小计：' + subtotal.toFixed(2) +
+//                      '(元)\n';
+//
+//       totalAmount += subtotal;
+//     }
+//
+//     var inventoryText = '***<没钱赚商店>购物清单***\n' +
+//     cartItemsText +
+//     '----------------------\n' +
+//     '总计：' + totalAmount.toFixed(2) + '(元)\n' +
+//     '**********************';
+//
+//
+//   console.log(inventoryText);
+// }
+//
+// function
+// // function
+// //   var cartItems = [];
+// //
+// //   for(var i = 0; i < items.length; i++) {
+// //     var cartItem = findCartItem(cartItems, items[i].barcode);
+// //     if (cartItem) {
+// //       cartItem.count++;
+// //     } else {
+// //       cartItems.push({ item: items[i], count: 1 });
+// //     }
+// //   }
+// //
+// //   var totalAmount = 0;
+// //   var cartItemsText = '';
+// //
+// //   for(var x = 0; x < cartItems.length; x++) {
+// //     var cartItem = cartItems[x];
+// //     var item = cartItem.item;
+// //
+// //     var subtotal = getSubtotal(item.price, cartItem.count);
+// //
+// //     cartItemsText += '名称：' + item.name +
+// //     '，数量：' + cartItem.count + item.unit +
+// //     '，单价：' + item.price.toFixed(2) +
+// //     '(元)，小计：' + subtotal.toFixed(2) +
+// //     '(元)\n';
+// //
+// //     totalAmount += subtotal;
+// //   }
+// //
+// //   var inventoryText = '***<没钱赚商店>购物清单***\n' +
+// //   cartItemsText +
+// //   '----------------------\n' +
+// //   '总计：' + totalAmount.toFixed(2) + '(元)\n' +
+// //   '**********************';
+// //
+// //   console.log(inventoryText);
+// // }
+// //
+// // function findCartItem(cartItems, barcode){
+// //   var cartItem;
+// //   for(var i = 0; i < cartItems.length; i++){
+// //     if(cartItems[i].item.barcode == barcode){
+// //       cartItem = cartItems[i];
+// //     }
+// //   }
+// //   return cartItem;
+// // }
+// //
+// // function getSubtotal(price, count){
+// //   return price * count;
+// // }
