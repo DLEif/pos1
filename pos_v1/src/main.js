@@ -1,52 +1,83 @@
-// function printInventory(barcode) {
-//
+function printInventory(barcodes){
   var items = [];
+  // var arr = barcode[i].split('-');
   var allItems = loadAllItems();
 
-  for(var i = 0; i < barcode.length; i++){
-    var item = findItem(allItems, barcode[i]);
-    items.push(item);
+  // for(var i = 0; i < barcode.length; i++){
+  //   var item = findItem(allItems, arr[0]);
+  //   items.push(item);
+  // }
+
+  var cartItems = [];
+  //  var Inventory = getInventory();
+
+  for(var i = 0; i < barcodes.length; i++) {
+    var arr = barcodes[i].split('-');
+    barcode = arr[0];
+    count = 1;
+    if(arr[1]){
+      count = parseFloat(arr[1]);
+    }
+    var cartItem = findCartItem(cartItems, barcode);
+    if(cartItem){
+      cartItem.count += count;
+    }else {
+      var newItem = findItem(allItems,barcode);
+      cartItems.push({ item: newItem, count: count });
+    }
+  }
+  console.log(cartItems);
+  // var inventorytext = '***<没钱赚商店>购物清单***\n';
+  // var promotionText = '';
+  // var summaryText = '';
+  // var promotions = loadPromotions();
+  // var sumtotal = 0;
+  // var subtotal = 0;
+  // var saveMoney = 0;
+  // var itemsText= '';
+  // for(var i = 0; i < cartItems.length; i++) {
+  //   var promotionitem = findpromotionitem(cartItems[i].item.barcode,promotions[0]);
+  //   if( promotionitem) {
+  //     promotionText += '名称：' + cartItems[i].item.name +
+  //     '，数量：' + Math.floor(cartItems[i].count / 3)
+  //     + cartItems[i].item.unit + '\n';
+  //     saveMoney += cartItems[i].item.price * Math.floor(cartItems[i].count / 3);
+  //   }
+  // }
+  // for(var i = 0; i < cartItems.length; i++) {
+  //   var count = cartItems[i].count;
+  //   var promotionitem =findpromotionitem(cartItems[i].item.barcode,promotions[0]);
+  //   if( promotionitem) {
+  //     count = cartItems[i].count - Math.floor(cartItems[i].count / 3);
+  //   }
+  //   subtotal = (cartItems[i].item.price) * count;
+  //   sumtotal += subtotal;
+  //   itemsText += '名称：' + cartItems[i].item.name +
+  //   '，数量：' + cartItems[i].count + cartItems[i].item.unit
+  //   + '，单价：' + cartItems[i].item.price.toFixed(2) +'(元)' +
+  //   '，小计：' + subtotal.toFixed(2) + '(元)\n';
+  // }
+  // summaryText = '总计：' + sumtotal.toFixed(2) + '(元)\n';
+  // inventorytext += itemsText +
+  // '----------------------\n' +
+  // '挥泪赠送商品：\n' +
+  // promotionText +
+  // '----------------------\n'
+  // + summaryText
+  // + '节省：' + saveMoney.toFixed(2) + '(元)\n'+
+  // '**********************';
+  // return inventorytext;
+}
+
 //
-//   }
+// function loadPromotions(type){
+//   for(var j = 0; j < loadPromotions()[0].barcodes.length; j++){
+//     if(cartItems[i].barcode === loadPromotions()[0].barcodes[j]){
 //
-//   var cartItems = [];
-//
-//   for(var i = 0; i < items.length; i++) {
-//     var cartItem = findCartItem(cartItems, items[i].barcode);
-//     if (cartItem) {
-//       cartItem.count++;
-//     } else {
-//       cartItems.push({ item: items[i], count: 1 });
-//     }
-//   }
-//
-//   var totalAmount = 0;
-//   var cartItemsText = '';
-//
-//   for(var x = 0; x < cartItems.length; x++) {
-//     var cartItem = cartItems[x];
-//     var item = cartItem.item;
-// 运用英语语言运用英语语言运用英语语言运用英语语言运用英语语言运用英语语言英语语言运用英语语言运用英语语言运用英语语言运用英语语言运用英语语言运用于
-//     var subtotal = getSubtotal(item.price, cartItem.count);
-//
-//     cartItemsText += '名称：' + item.name +
-//     '，数量：' + cartItem.count + item.unit +
-//     '，单价：' + item.price.toFixed(2) +
-//     '(元)，小计：' + subtotal.toFixed(2) +
-//     '(元)\n';
-//
-//     totalAmount += subtotal;
-//   }
-//
-//   var inventoryText = '***<没钱赚商店>购物清单***\n' +
-//   cartItemsText +
-//   '----------------------\n' +
-//   '总计：' + totalAmount.toFixed(2) + '(元)\n' +
-//   '**********************';
-//
-//   console.log(inventoryText);
 // }
-function findItem(allItems, barcode){
+
+
+function findItem(allItems,barcode){
   var item;
   for(var i = 0; i < allItems.length; i++){
     if(allItems[i].barcode === barcode){
@@ -55,66 +86,11 @@ function findItem(allItems, barcode){
   }
   return item;
 }
-//
-// function findCartItem(cartItems, barcode){
-//   var cartItem;
-//   for(var i = 0; i < cartItems.length; i++){
-//     if(cartItems[i].item.barcode == barcode){
-//       cartItem = cartItems[i];
-//     }
-//   }
-//   return cartItem;
-// }
-//
-// function getSubtotal(price, count){
-//   return price * count;
-// }
-//
-//
-//
-function printInventory(barcode){
-  var items = [];
-  var arr = barcode.split('-');
-  var allItems = loadAllItems();
-
-  for(var i = 0; i < barcode.length; i++){
-    var item = findItem(allItems, arr[0]);
-    items.push(item);
-  }
-
-  var cartItems = [];
-
-  for(var i = 0; i < items.length; i++) {
-    var cartItem = findCartItem(cartItems, items[i].barcode);
-    if(Items[i].split('-').length > 1){
-      cartItems.push({ item: items[i], count: arr[1] });
-    }else if (cartItem) {
-      cartItem.count++;
-    } else {
-      cartItems.push({ item: items[i], count: 1 });
-    }
-
-}
-
-function findItem(allItems, barcode){
-  var item;
-  var arr = barcode.split('-');
-  for(var i = 0; i < allItems.length; i++){
-    if(allItems[i].barcode === arr[0]){
-      item = allItems[i];
-    }
-  }
-  return item;
-}
-  cartItems[cartItems.length] = { barcode : arr[0], num : arr[1]};
-  b = false;
-  continue;
-}
 
 function findCartItem(cartItems, barcode){
   var cartItem;
   for(var i = 0; i < cartItems.length; i++){
-    if(cartItems[i].item.barcode == barcode){
+    if(cartItems[i].item.barcode === barcode){
       cartItem = cartItems[i];
     }
   }
@@ -123,4 +99,14 @@ function findCartItem(cartItems, barcode){
 
 function getSubtotal(price, count){
   return price * count;
+}
+
+function findpromotionitem(barcode,promotions) {
+  var promotionitem;
+  for(var i = 0;i < promotions.barcodes.length;i++) {
+    if(promotions.barcodes[i] === barcode) {
+      promotionitem = promotions.barcodes[i];
+    }
+  }
+  return promotionitem;
 }
