@@ -41,3 +41,13 @@ InventoryText.getText = function(cartItems){
   '**********************';
   return inventorytext;
 }
+
+function findpromotionitem(barcode,promotions) {
+  var promotionitem;
+  for(var i = 0;i < promotions.barcodes.length;i++) {
+    if(promotions.barcodes[i] === barcode) {
+      promotionitem = promotions.barcodes[i];
+    }
+  }
+  return promotionitem;
+}
