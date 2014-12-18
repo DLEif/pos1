@@ -4,7 +4,7 @@ function CartItem(item, count) {
 }
 
 
-CartItem.getcartItems = function (tags) {
+CartItem.getCartItems = function (tags) {
   var cartItems = [];
   var allItems = loadAllItems();
 
@@ -24,12 +24,12 @@ CartItem.getcartItems = function (tags) {
       cartItem.count += count;
     } else {
       var newitem = CartItem.findItem(allItems,barcode);
-      var cartItem = new CartItem(newitem, count);
+      //var cartItem = new CartItem(newitem, count);
       cartItems.push(cartItem);
     }
   }
   return cartItems;
-}
+};
 CartItem.findCartItem = function (barcode, cartItems) {
   var cartItem;
   for(var i = 0; i < cartItems.length; i++) {
@@ -38,31 +38,22 @@ CartItem.findCartItem = function (barcode, cartItems) {
     }
   }
   return cartItem;
-}
+};
 CartItem.findItem = function(allItems,barcode) {
-  var newitem;
-  for(var i = 0;i < allItems.length;i++) {
-    if(allItems[i].barcode === barcode) {
-      newitem = allItems[i];
+  var newItem;
+  _.forEach(allItems, function(allItem) {
+    if(allItem.barcode === barcode) {
+      newItem = allItem;
     }
-  }
-  return newitem;
-}
+  });
+  return newItem;
+};
 
-CartItem.getitemsText = function(cartItems, subtotal, i) {
+CartItem.getItemsText = function(cartItems, subtotal, i) {
   var itemsText = '';
   itemsText += '名称：' + cartItems[i].item.name +
-  '，数量：' + cartItems[i].count + cartItems[i].item.unit
-  + '，单价：' + cartItems[i].item.price.toFixed(2) +'(元)' +
+  '，数量：' + cartItems[i].count + cartItems[i].item.unit +
+  '，单价：' + cartItems[i].item.price.toFixed(2) +'(元)' +
   '，小计：' + subtotal.toFixed(2) + '(元)\n';
   return itemsText;
-}
-
-CartItem.getitemsText = function(cartItems, subtotal, i) {
-  var itemsText = '';
-  itemsText += '名称：' + cartItems[i].item.name +
-  '，数量：' + cartItems[i].count + cartItems[i].item.unit
-  + '，单价：' + cartItems[i].item.price.toFixed(2) +'(元)' +
-  '，小计：' + subtotal.toFixed(2) + '(元)\n';
-  return itemsText;
-}
+};
